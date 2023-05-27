@@ -13,7 +13,7 @@ import {
 import { Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 import pdfMake from "pdfmake/build/pdfmake";
-// import pdfFonts from "pdfmake/build/vfs_fonts";
+
 import axios from "axios";
 import { Spinner } from "@chakra-ui/react";
 import { useEffect } from "react";
@@ -101,8 +101,6 @@ const Resultado = () => {
 
   const maxBottleIcons = 4;
   const displayedBottleIcons = Math.min(waterInter, maxBottleIcons);
-
-  // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
   const getChatbotResponse = async () => {
     setIsLoading(true);
