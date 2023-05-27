@@ -13,7 +13,7 @@ import {
 import { Textarea } from "@chakra-ui/react";
 import React, { useState } from "react";
 import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
+// import pdfFonts from "pdfmake/build/vfs_fonts";
 import axios from "axios";
 import { Spinner } from "@chakra-ui/react";
 import { useEffect } from "react";
@@ -39,7 +39,7 @@ const Resultado = () => {
   var altura2 = altura / 100;
   var IMC = peso / (altura2 * altura2);
 
-  const calcularNecessidadeCalorica = (tmb) => {
+  const calcularNecessidadeCalorica = (tmb, nivelAtividade) => {
     let multiplicador = 0;
     switch (nivelAtividade) {
       case "sedentário":
@@ -60,7 +60,8 @@ const Resultado = () => {
     return tmb * multiplicador;
   };
 
-  const necessidadeCalorica = calcularNecessidadeCalorica(tmb);
+  const atividade = "moderado"; // Example value for activity level
+  const necessidadeCalorica = calcularNecessidadeCalorica(tmb, atividade);
 
   const classificarIMC = (imc) => {
     if (imc < 18.5) {
@@ -101,7 +102,7 @@ const Resultado = () => {
   const maxBottleIcons = 4;
   const displayedBottleIcons = Math.min(waterInter, maxBottleIcons);
 
-  pdfMake.vfs = pdfFonts.pdfMake.vfs;
+  // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
   const getChatbotResponse = async () => {
     setIsLoading(true);
